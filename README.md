@@ -104,27 +104,39 @@ Here is a comprehensive list of the primary API endpoints, along with the expect
 | <kbd> GET  /accounts/users/{uuid:id}/</kbd>| Retrieve a specific user by id                  |
 | <kbd> PUT  /accounts/users/{uuid:id}/</kbd>| Update a specific user by id                    |
 | <kbd> DELETE  /accounts/users/{uuid:id}/</kbd>| Delete a specific user by id                 |
+| <kbd> GET /accounts/users?is_staff=True </kbd>| Filter - List all users admin                |
+| <kbd> GET /accounts/users?is_staff=False </kbd>| Filter - List all users normal(not admin)   |
 
 
 <h3> Profiles </h3>
 
-| Route                                  | Description                                         |
-|----------------------------------------|-----------------------------------------------------|
-| <kbd> GET  /accounts/profiles/ </kbd>       | List all users profiles                        |
-| <kbd> GET  /accounts/profiles/{uuid:id}/</kbd>       | Retrieve a user profile by id         |
-| <kbd> PUT  /accounts/profiles/{uuid:id}/</kbd>       | Update a user profile                 |
+| Route                                  | Description                                          |
+|----------------------------------------|------------------------------------------------------|
+| <kbd> GET  /accounts/profiles/ </kbd>       | List all users profiles                         |
+| <kbd> GET  /accounts/profiles/{uuid:id}/</kbd>       | Retrieve a user profile by id          |
+| <kbd> PUT  /accounts/profiles/{uuid:id}/</kbd>       | Update a user profile                  |
+| <kbd> GET  /accounts/profiles?birthday=2001-03-18 </kbd> | Filter - List all users by birthday|
+| <kbd> GET  /accounts/profiles?gender=MASCULINO </kbd> | Filter - List all users by gender     |
 
 <h3> ToDo </h3>
 
-| Route                                    | Description                                         |
-|------------------------------------------|-----------------------------------------------------|
-| <kbd> GET    /todo/ </kbd>             | List all user task                                    |
-| <kbd> POST   /todo/ </kbd>             | Create a new task                                     |
-| <kbd> GET    /todo/admin/ </kbd>       | List all users task in admin mode                     |
-| <kbd> GET    /todo/{uuid:id}/ </kbd>    | Retrieve a specific task                             |
-| <kbd> PUT    /todo/{uuid:id}/ </kbd>    | Update a specific task                               |
-| <kbd> Delete /todo/{uuid:id}/ </kbd>    | Destroy a specific task                              |
-
+| Route                                         | Description                                         |
+|-----------------------------------------------|-----------------------------------------------------|
+| <kbd> GET    /todo/ </kbd>                    | List all user task                                  |
+| <kbd> POST   /todo/ </kbd>                    | Create a new task                                   |
+| <kbd> GET    /todo/admin/ </kbd>              | List all users task in admin mode                   |
+| <kbd> GET    /todo/{uuid:id}/ </kbd>          | Retrieve a specific task                            |
+| <kbd> PUT    /todo/{uuid:id}/ </kbd>          | Update a specific task                              |
+| <kbd> Delete /todo/{uuid:id}/ </kbd>          | Destroy a specific task                             |
+| <kbd> GET    /todo/?status=pending </kbd>     | Filter - List all "pending" task                    |
+| <kbd> GET    /todo/?status=defer </kbd>       | Filter - List all "deferred" task                   |
+| <kbd> GET    /todo/?status=overdue </kbd>     | Filter - List all task with "overdue"               |
+| <kbd> GET    /todo/?status=completed </kbd>   | Filter - List all "completed" task                  |
+| <kbd> GET    /todo/?priority=low </kbd>       | Filter - List all task with "low" priority          |
+| <kbd> GET    /todo/?priority=middle </kbd>    | Filter - List all task with "middle" priority       |
+| <kbd> GET    /todo/?priority=high </kbd>      | Filter - List all task with "high" priority         |
+| <kbd> GET    /todo/?due_date=2024-08-15 </kbd>| Filter - List all task with a specific due date     |
+| <kbd> GET    /todo/?search=hell </kbd>        | Search all task with a string     |
 
 
 <h3> GET /accounts/token/ </h3>

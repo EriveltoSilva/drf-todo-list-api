@@ -9,8 +9,10 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
+from django_filters.rest_framework import DjangoFilterBackend
+
 from . import utils, emails
-from .permissions import IsOwnerOrAdmin
+from .permissions import IsOwnerOrAdmin, IsAdmin
 from .models import Profile
 from .serializers import ProfileSerializer
 from .serializers import UserSerializer, UserRegisterSerializer, MyTokenObtainPairSerializer
@@ -108,8 +110,10 @@ class PasswordChangeView(generics.CreateAPIView):
 class UserListView(generics.ListAPIView):
     """User list endpoint."""
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdmin]
     serializer_class = UserSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['is_staff', 'is_superuser', 'date_joined', ]
 
 
 class UserCreateView(generics.CreateAPIView):
@@ -131,6 +135,8 @@ class ProfileListAPIView(generics.ListAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = (IsAuthenticated,)
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['birthday', 'gender', 'created_at',]
 
 
 class ProfileRetrieveUpdateView(generics.RetrieveUpdateAPIView):

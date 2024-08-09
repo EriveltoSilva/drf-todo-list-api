@@ -30,6 +30,5 @@ class ToDo(models.Model):
         return self.title
 
 
-# 940 81 11 41
 # Simple enough stuff so far - Coisas bem simples até aqui.
 # So far, so good - Até agora tudo bem.
