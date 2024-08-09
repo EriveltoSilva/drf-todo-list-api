@@ -140,15 +140,6 @@ class ProfileRetrieveUpdateView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
     lookup_field = 'id'
 
-    # def get_object(self, *args, **kwargs):
-    #     user_id = self.kwargs.get('user_id')
-    #     try:
-    #         user = User.objects.get(uid=user_id)
-    #         profile = Profile.objects.get(user=user)
-    #     except Profile.DoesNotExist:
-    #         profile = None
-    #     return profile
-
     def retrieve(self, request, *args, **kwargs):
         profile = self.get_object()
         if profile is None:
