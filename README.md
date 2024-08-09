@@ -3,7 +3,7 @@
 [LICENSE_BADGE]: https://img.shields.io/pypi/l/ansicolortags.svg
 [DJANGO_BADGE]:https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white
 
-<h1 align="center" style="font-weight: bold;"> drf-api-todo-list 💻</h1>
+<h1 align="center" style="font-weight: bold;"> drf-todo-list-api 💻</h1>
 
 ![Python][PYTHON_BADGE]
 ![Django][DJANGO_BADGE]
@@ -111,18 +111,21 @@ Here is a comprehensive list of the primary API endpoints, along with the expect
 
 | Route                                  | Description                                         |
 |----------------------------------------|-----------------------------------------------------|
-| <kbd> GET  /accounts/profiles/ </kbd>       | List all users profiles                         |
+| <kbd> GET  /accounts/profiles/ </kbd>       | List all users profiles                        |
 | <kbd> GET  /accounts/profiles/{uuid:id}/</kbd>       | Retrieve a user profile by id         |
 | <kbd> PUT  /accounts/profiles/{uuid:id}/</kbd>       | Update a user profile                 |
 
+<h3> ToDo </h3>
 
-<!-- | <kbd>PUT /api/finance/{id}/</kbd>      | Update an existing transaction                      | -->
-<!-- | <kbd>DELETE /api/finance/{id}/</kbd>   | Delete a transaction                                | -->
-<!-- | <kbd>GET /api/documents/</kbd>         | List all documents                                  | -->
-<!-- | <kbd>POST /api/documents/</kbd>        | Upload a new document                               | -->
-<!-- | <kbd>GET /api/documents/{id}/</kbd>    | Get details of a specific document                  | -->
-<!-- | <kbd>PUT /api/documents/{id}/</kbd>    | Update an existing document                         | -->
-<!-- | <kbd>DELETE /api/documents/{id}/</kbd> | Delete a document                                   | -->
+| Route                                    | Description                                         |
+|------------------------------------------|-----------------------------------------------------|
+| <kbd> GET    /todo/ </kbd>             | List all user task                                    |
+| <kbd> POST   /todo/ </kbd>             | Create a new task                                     |
+| <kbd> GET    /todo/admin/ </kbd>       | List all users task in admin mode                     |
+| <kbd> GET    /todo/{uuid:id}/ </kbd>    | Retrieve a specific task                             |
+| <kbd> PUT    /todo/{uuid:id}/ </kbd>    | Update a specific task                               |
+| <kbd> Delete /todo/{uuid:id}/ </kbd>    | Destroy a specific task                              |
+
 
 
 <h3> GET /accounts/token/ </h3>
@@ -221,6 +224,41 @@ Here is a comprehensive list of the primary API endpoints, along with the expect
         },
         ...
     ]
+}
+```
+
+<h3> POST /todo/ </h3>
+
+**REQUEST BODY**
+```json
+{
+    "title": "Teste4",
+    "description": "Teste description3",
+    "due_date": "2024-08-15 10:00:00",
+    "status": "pending",
+    "priority":"middle"
+}
+```
+
+**RESPONSE**
+```json
+{
+    "id": "4b11b514-b3d5-4354-9995-4c2c33afca46",
+    "title": "Teste4",
+    "description": "Teste description3",
+    "due_date": "2024-08-15T10:00:00+01:00",
+    "status": "pending",
+    "priority": "middle",
+    "owner": {
+        "id": "15b63104-0cc5-4fc5-9d2e-fa1afa9b0caf",
+        "first_name": "ERIVELTO",
+        "last_name": "SILVA",
+        "email": "eriveltoclenio@gmail.com",
+        "username": "admin",
+        "profile": "253408a5-a4b9-4168-8f21-78cdc384fffe"
+    },
+    "created_at": "2024-08-09T23:50:47.164481+01:00",
+    "updated_at": "2024-08-09T23:50:47.164492+01:00"
 }
 ```
 
