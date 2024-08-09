@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,13 +17,13 @@ if not DEBUG:
     CSRF_ALLOWED_ORIGINS = ["https://todoapp.eriveltosilva.com"]
     CORS_ORIGINS_WHITELIST = ["https://todoapp.eriveltosilva.com"]
     CSRF_COOKIE_SECURE = True
-
+    # CORS_ALLOWED_ORIGINS = ['https://todoapp.eriveltosilva.com', 'https://todoapp.eriveltosilva.com']
+# else:
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,12 +37,19 @@ INSTALLED_APPS = [
     'apps.todo.apps.TodoConfig',
 
     # Vendor apps
+    'drf_yasg',
+    'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    # Cors headers installation
+    "corsheaders.middleware.CorsMiddleware",
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,17 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'pt-pt'
 TIME_ZONE = 'Africa/Luanda'
 USE_I18N = True
 USE_TZ = True
 
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -122,6 +124,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ---------------------------- Extra Config --------------------------------------
 # Customized User model
 AUTH_USER_MODEL = 'accounts.User'
+
+SYSTEM_NAME = "TasKing"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -146,9 +150,26 @@ EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
+}
+
+SIMPLE_JWT = {
+    # 'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ALGORITHM': 'HS256',
+    # 'SIGNING_KEY': SECRET_KEY,
+    # 'INCORPORATE_TOKEN_IN': ['JWT', 'Bearer'],
+    # 'AUTH_HEADER_TYPES': ['JWT', 'Bearer'],
+    # 'USER_ID_FIELD': 'id',
+    # 'USER_ID_CLAIM': 'user_id',
+    # 'AUTH_TOKEN_CLASSES': ['rest_framework_simplejwt.tokens.AccessToken',],
+    # 'TOKEN_TYPE_CLAIM': 'token_type',
 }

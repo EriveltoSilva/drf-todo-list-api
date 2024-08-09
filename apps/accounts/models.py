@@ -11,14 +11,6 @@ class User(AbstractUser):
     username = models.CharField(max_length=100, unique=True, null=False, blank=False)
     otp = models.CharField(max_length=100, null=True, blank=True)
 
-    # type = models.CharField(
-    #     max_length=10,
-    #     null=False,
-    #     blank=False,
-    #     choices=constants.TYPE_USER,
-    #     default=constants.TYPE_USER[0]
-    # )
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
@@ -39,7 +31,7 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    GENDER = (("male", "MASCULINO"), ("female", "FEMININO"),)
+    GENDER = (("MASCULINO", "MASCULINO"), ("FEMININO", "FEMININO"),)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     bio = models.TextField(null=True, blank=True)
     birthday = models.DateField(null=True, blank=True)
