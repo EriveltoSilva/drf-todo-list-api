@@ -74,8 +74,7 @@ cp .env.example .env
 - Open .env file;
 - Fill project SECRET_KEY;
 - Fill EMAIL configs;
-- Choose the right database config uncommenting that and db commenting others;
-- Fill OPENAI_API_KEY;
+- Choose the right database config uncommenting that and leave others commented;
 
 - Start project
 ```bash
