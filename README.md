@@ -14,7 +14,7 @@
 
 <ul>
     <li><a href="#about">About</a></li>
-    <li><a href="#featured">Features</a></li>
+    <li><a href="#features">Features</a></li>
     <li>
       <a href="#gettingStarted">Getting Started</a>
     </li>
@@ -48,7 +48,7 @@ This is a Todo List API built with Django Rest Framework (DRF). The purpose of t
 - <strong>Task Archiving:</strong> Archive completed tasks to keep the active task list organized.
 
 
-<h2 id="started">🚀 Getting started</h2>
+<h2 id="gettingStarted">🚀 Getting started</h2>
 
 This section describes how you can run this project locally.
 
