@@ -47,6 +47,8 @@ This is a Todo List API built with Django Rest Framework (DRF). The purpose of t
 
 - <strong>Task Archiving:</strong> Archive completed tasks to keep the active task list organized.
 
+- <strong>Task Pagination:</strong> Pagination in all tasks search query.
+
 
 <h2 id="gettingStarted">🚀 Getting started</h2>
 
