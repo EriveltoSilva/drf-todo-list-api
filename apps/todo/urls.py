@@ -9,4 +9,6 @@ urlpatterns = [
     path('<uuid:id>/', views.ToDoRetrieveUpdateDestroyAPIView.as_view(), name="api-todo-retrieve-update-delete"),
 
     path('admin/', views.ToDoListAdminAPIView.as_view(), name="api-todo-list-admin"),
+    path('archived/', views.ListArchiveToDoAPIView.as_view(), name="api-todo-archived-list"),
+    path('archived/<uuid:id>/', views.ArchiveToDoAPIView.as_view(), name="api-todo-archive"),
 ]

@@ -21,6 +21,8 @@
     <li><a href="#howToRun">How To Run</a></li>
     <li><a href="#routes">API Endpoints</a></li>
     <li><a href="#collaborators">Collaborators</a></li>
+    <li><a href="#contribute">Contribute</a></li>
+    <li><a href="#license">License</a></li>
 </ul>
 
 <!-- <p align="center">
@@ -39,6 +41,11 @@ This is a Todo List API built with Django Rest Framework (DRF). The purpose of t
 
 - <strong>Task CRUD Operations:</strong> Create, read, update, and delete tasks with customizable fields such as title, description, due date, priority, and status.
 
+- <strong>Task Prioritization:</strong> Assign priority levels (High, Medium, Low) to tasks, and easily sort or filter them.
+
+- <strong>Advanced Search & Filtering:</strong> Search tasks by keywords in title or description, and filter by status, priority, category, and more
+
+- <strong>Task Archiving:</strong> Archive completed tasks to keep the active task list organized.
 
 
 <h2 id="started">🚀 Getting started</h2>
@@ -136,7 +143,9 @@ Here is a comprehensive list of the primary API endpoints, along with the expect
 | <kbd> GET    /todo/?priority=middle </kbd>    | Filter - List all task with "middle" priority       |
 | <kbd> GET    /todo/?priority=high </kbd>      | Filter - List all task with "high" priority         |
 | <kbd> GET    /todo/?due_date=2024-08-15 </kbd>| Filter - List all task with a specific due date     |
-| <kbd> GET    /todo/?search=hell </kbd>        | Search all task with a string     |
+| <kbd> GET    /todo/?search=hell </kbd>        | Search all task with a string                       |
+| <kbd> GET    /todo/archived/ </kbd>           | List all task archived                              |
+| <kbd> PATCH  /todo/archived/{uuid:id}/ </kbd> | Archive a specific task completed                   |
 
 
 <h3> GET /accounts/token/ </h3>
@@ -299,3 +308,8 @@ Special thank you for all people that contributed for this project.
 2. `git checkout -b feature/NAME`
 3. Follow commit patterns
 4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
+
+
+<h2 id="license"></h2>License</h2>
+
+This project is licensed under the MIT License - see the <a href="./LICENSE.txt">LICENSE</a> file for details.

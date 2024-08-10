@@ -16,6 +16,7 @@ class ToDo(models.Model):
     due_date = models.DateTimeField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
     priority = models.CharField(max_length=20, choices=STATUS_PRIORITY, default=STATUS_PRIORITY[0][0])
+    is_archived = models.BooleanField(default=False)
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
