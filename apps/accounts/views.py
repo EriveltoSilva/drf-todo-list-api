@@ -143,7 +143,7 @@ class ProfileRetrieveUpdateView(generics.RetrieveUpdateAPIView):
     """profile user detail view to retrieve profile information"""
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwnerOrAdmin]
     lookup_field = 'id'
 
     def retrieve(self, request, *args, **kwargs):

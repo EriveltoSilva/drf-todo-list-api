@@ -41,7 +41,7 @@ class ToDoRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
 
-class ListArchiveToDoAPIView(generics.ListAPIView):
+class ListArchivedToDoAPIView(generics.ListAPIView):
     serializer_class = ToDoSerializer
     permission_classes = [IsOwnerOrAdmin,]
     queryset = ToDo.objects.all()
