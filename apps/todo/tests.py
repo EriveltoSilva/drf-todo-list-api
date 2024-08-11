@@ -1,3 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class ToDOTest(TestCase):
+    def test_is_pytest_ok(self):
+        ...
